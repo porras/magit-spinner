@@ -18,13 +18,17 @@
   "Shows a spinner during Magit async operations (pull, push, fetch, etc.)"
   :lighter magit-spinner-mode--lighter)
 
+;;;###autoload
 (defun magit-spinner-mode-enable (&rest args)
   (magit-spinner-mode 1))
 
+;;;###autoload
 (defun magit-spinner-mode-disable (&rest args)
   (magit-spinner-mode -1))
 
+;;;###autoload
 (advice-add 'magit-run-git-async :before 'magit-spinner-mode-enable)
+;;;###autoload
 (advice-add 'magit-process-finish :after 'magit-spinner-mode-disable)
 
 (provide 'magit-spinner)
